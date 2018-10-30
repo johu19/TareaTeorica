@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CYK
+namespace Modelo
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace CYK
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Interfaz());
+            Application.Run(new Form1());
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYK", "..\..\CYK\CYK\CYK.csproj", "{3C4014D5-5827-4C93-B428-3D10F525374E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYK", "CYK\CYK.csproj", "{3C4014D5-5827-4C93-B428-3D10F525374E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7D56D692-5F68-4869-8D75-242D46C0683F}
+		SolutionGuid = {5D47F94C-788F-4F93-952C-F81CCFD52848}
 	EndGlobalSection
 EndGlobal
