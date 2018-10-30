@@ -63,6 +63,18 @@
       <DependentUpon>VentanaAgregarProducciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Variable.cs" />
+    <Compile Include="VentanaAlgoritmoCYK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaAlgoritmoCYK.Designer.cs">
+      <DependentUpon>VentanaAlgoritmoCYK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaProduccionesAgregadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaProduccionesAgregadas.Designer.cs">
+      <DependentUpon>VentanaProduccionesAgregadas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Interfaz.resx">
       <DependentUpon>Interfaz.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +87,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VentanaAgregarProducciones.resx">
+      <DependentUpon>VentanaAgregarProducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaAlgoritmoCYK.resx">
+      <DependentUpon>VentanaAlgoritmoCYK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaProduccionesAgregadas.resx">
+      <DependentUpon>VentanaProduccionesAgregadas.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

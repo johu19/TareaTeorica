@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 
 namespace CYK
 {
-    class Gramatica
+   public class Gramatica
     {
-        public List<Variable> variables { get; set; }
-        public List<string> terminales { get; set; }
+        private List<string> terminales;
 
         public Gramatica(List<string> var, List<string> term)
         {
-            variables = new List<Variable>();
+            Variables = new List<Variable>();
             foreach(string s in var)
             {
                 Variable v = new Variable(s);
-                variables.Add(v);
+                Variables.Add(v);
             }
-            terminales = term;
+            Terminales = term;
         }
+
+        public List<Variable> Variables { get; set; }
+        public List<string> Terminales { get => terminales; set => terminales = value; }
 
         public Boolean agregarProduccion(string var,string prod)
         {
@@ -29,7 +31,7 @@ namespace CYK
             foreach (char c in letras)
             {
                 string s = c + "";
-                if(variables.Any(v=>v.valor.Equals(s))||terminales.Any(t=> t.Equals(s)))
+                if(Variables.Any(v=>v.valor.Equals(s))||Terminales.Any(t=> t.Equals(s)))
                 {
                     cond = false;
                 }
@@ -41,7 +43,7 @@ namespace CYK
             }
             else
             {
-                return variables.Where(v => v.valor.Equals(var)).First().agregarProduccion(prod);
+                return Variables.Where(v => v.valor.Equals(var)).First().agregarProduccion(prod);
             }
             
         }

@@ -12,9 +12,33 @@ namespace CYK
 {
     public partial class VentanaAgregarProducciones : Form
     {
-        public VentanaAgregarProducciones()
+        private VentanaProduccionesAgregadas ventanaProduccionesAgregadas;
+        private Gramatica gramatica;
+        
+
+        public VentanaAgregarProducciones(VentanaProduccionesAgregadas ventanaProduccionesAgregadas, Gramatica grama)
         {
             InitializeComponent();
+            this.ventanaProduccionesAgregadas = ventanaProduccionesAgregadas;
+            inicializarComboBox();
+            gramatica = grama;
+
+        }
+
+        private void inicializarComboBox()
+        {
+            
+        }
+
+        public void btnAgregarProduccion_Click(object sender, EventArgs e)
+        {
+            
+
+                foreach (Variable es in gramatica.)
+            {
+                comboBoxVariables.Items.Add(es.getValor());
+                
+            }
         }
     }
 }

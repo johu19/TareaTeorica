@@ -19,7 +19,9 @@ namespace CYK
 
         private Gramatica gramatica;
 
-        private VentanaAgregarProducciones agregarProd;
+        private VentanaProduccionesAgregadas agregarProd;
+
+       
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
@@ -40,7 +42,7 @@ namespace CYK
 
             gramatica = new Gramatica(variables, terminales);
 
-            agregarProd = new VentanaAgregarProducciones();
+            agregarProd = new VentanaProduccionesAgregadas();
             agregarProd.Visible = true;
             this.Visible = false;
         }
