@@ -25,6 +25,11 @@ namespace CYK
             Terminales = term;
         }
 
+        public List<List<string>> getMatrizCYK()
+        {
+            return matrizCYK;
+        }
+
 
         public List<string> Terminales { get => terminales; set => terminales = value; }
         public List<Variable> Variables { get => variables; set => variables = value; }
@@ -98,35 +103,35 @@ namespace CYK
 
                 }
 
-                int n = cadena.Length;
+                //int n = cadena.Length;
                 
-                //agregar siguientes columnas
-                for(int j=1; j < cadena.Length; j++)
-                {
-                    int topeFila = n - j;
+                ////agregar siguientes columnas
+                //for(int j=1; j < cadena.Length; j++)
+                //{
+                //    int topeFila = n - j;
 
-                    for(int i=0; i< topeFila; i++)
-                    {
+                //    for(int i=0; i< topeFila; i++)
+                //    {
 
-                        int topeK = j+1;
-
-
-
-                        //AQUI TODO
-
-
-                        for(int k=1; k < topeK; k++)
-                        {
-                            string s1 = matrizCYK.ElementAt(i).ElementAt(j);
-                            string s2 = matrizCYK.ElementAt(i + k).ElementAt(j - k);
+                //        int topeK = j+1;
 
 
 
-                        }
+                //        //AQUI TODO
 
 
-                    }
-                }
+                //        for(int k=1; k < topeK; k++)
+                //        {
+                //            string s1 = theMatrizCYK.ElementAt(i).ElementAt(j);
+                //            string s2 = theMatrizCYK.ElementAt(i + k).ElementAt(j - k);
+
+
+
+                //        }
+
+
+                //    }
+                //}
 
 
                 matrizCYK = theMatrizCYK;

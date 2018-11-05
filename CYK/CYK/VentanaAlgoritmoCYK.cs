@@ -105,6 +105,44 @@ namespace CYK
             if (!txtCadena.Text.Equals(""))
             {
                 gramatica.algoritmoCYK(txtCadena.Text);
+
+                string cadena = txtCadena.Text;
+
+                List<List<string>> matriz = gramatica.getMatrizCYK();
+
+                tablaCYK.Columns.Clear();
+                tablaCYK.Rows.Clear();
+
+                for(int j = 0; j < cadena.Length; j++)
+                {
+                    tablaCYK.Columns.Add(new DataGridViewTextBoxColumn());
+                    
+                }
+
+                for(int i = 0; i < cadena.Length; i++)
+                {
+                    tablaCYK.Rows.Add();
+                }
+
+                for(int j = 0; j < cadena.Length; j++)
+                {
+
+                    if (matriz.First().Count > j)
+                    {
+                        for (int i = 0; i < cadena.Length; i++)
+                        {
+
+                            string s = matriz.ElementAt(i).ElementAt(j);
+                            tablaCYK.Rows[i].Cells[j].Value = s;
+
+                        }
+                    }
+                    
+                }
+
+
+
+
             }
         }
     }
