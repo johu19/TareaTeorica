@@ -39,10 +39,10 @@
             this.columnVariables = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnFlecha = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnProducciones = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.but_ValidarConCYK = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_cadena = new System.Windows.Forms.TextBox();
+            this.btnValidarConCYK = new System.Windows.Forms.Button();
+            this.txtCadena = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tablaCYK = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -150,15 +150,6 @@
             this.columnProducciones.Text = "Producciones";
             this.columnProducciones.Width = 180;
             // 
-            // but_ValidarConCYK
-            // 
-            this.but_ValidarConCYK.Location = new System.Drawing.Point(333, 38);
-            this.but_ValidarConCYK.Name = "but_ValidarConCYK";
-            this.but_ValidarConCYK.Size = new System.Drawing.Size(110, 46);
-            this.but_ValidarConCYK.TabIndex = 4;
-            this.but_ValidarConCYK.Text = "Validar";
-            this.but_ValidarConCYK.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -177,13 +168,23 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Gramática : ";
             // 
-            // txt_cadena
+            // btnValidarConCYK
             // 
-            this.txt_cadena.Location = new System.Drawing.Point(105, 38);
-            this.txt_cadena.Multiline = true;
-            this.txt_cadena.Name = "txt_cadena";
-            this.txt_cadena.Size = new System.Drawing.Size(213, 44);
-            this.txt_cadena.TabIndex = 1;
+            this.btnValidarConCYK.Location = new System.Drawing.Point(333, 38);
+            this.btnValidarConCYK.Name = "btnValidarConCYK";
+            this.btnValidarConCYK.Size = new System.Drawing.Size(110, 46);
+            this.btnValidarConCYK.TabIndex = 4;
+            this.btnValidarConCYK.Text = "Validar";
+            this.btnValidarConCYK.UseVisualStyleBackColor = true;
+            this.btnValidarConCYK.Click += new System.EventHandler(this.btnValidarConCYK_Click);
+            // 
+            // txtCadena
+            // 
+            this.txtCadena.Location = new System.Drawing.Point(105, 38);
+            this.txtCadena.Multiline = true;
+            this.txtCadena.Name = "txtCadena";
+            this.txtCadena.Size = new System.Drawing.Size(213, 44);
+            this.txtCadena.TabIndex = 1;
             // 
             // label2
             // 
@@ -210,8 +211,8 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.tablaCYK);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.txt_cadena);
-            this.panel2.Controls.Add(this.but_ValidarConCYK);
+            this.panel2.Controls.Add(this.txtCadena);
+            this.panel2.Controls.Add(this.btnValidarConCYK);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(25, 320);
             this.panel2.Name = "panel2";
@@ -280,10 +281,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button but_ValidarConCYK;
+        private System.Windows.Forms.Button btnValidarConCYK;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_cadena;
+        private System.Windows.Forms.TextBox txtCadena;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView tablaCYK;
         private System.Windows.Forms.Label label5;

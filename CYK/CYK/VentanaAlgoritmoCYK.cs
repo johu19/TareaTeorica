@@ -99,5 +99,13 @@ namespace CYK
                 MessageBox.Show("Error, debe seleccionar una variable.");
             }
         }
+
+        private void btnValidarConCYK_Click(object sender, EventArgs e)
+        {
+            if (!txtCadena.Text.Equals(""))
+            {
+                gramatica.algoritmoCYK(txtCadena.Text);
+            }
+        }
     }
 }
