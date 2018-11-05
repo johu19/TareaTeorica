@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 172);
+            this.ClientSize = new System.Drawing.Size(829, 529);
             this.Controls.Add(this.btnAgregarProduccion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtValorProduccion);

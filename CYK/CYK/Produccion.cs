@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CYK
 {
-    class Produccion
+   public class Produccion
     {
         //Una variable va a tener varias producciones, cada produccion tiene un valor
         //(lado derecho de las producciones)

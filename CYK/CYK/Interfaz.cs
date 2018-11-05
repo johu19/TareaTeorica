@@ -19,14 +19,14 @@ namespace CYK
 
         private Gramatica gramatica;
 
-        private VentanaProduccionesAgregadas agregarProd;
+        private VentanaAlgoritmoCYK ventanaCyk;
 
        
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            string[] var = labelVariables.Text.Split(',');
-            string[] term = labelTerminales.Text.Split(',');
+            string[] var = textVariables.Text.Split(',');
+            string[] term = textTerminales.Text.Split(',');
 
             List<string> variables = new List<string>();
             foreach(string s in var)
@@ -42,8 +42,8 @@ namespace CYK
 
             gramatica = new Gramatica(variables, terminales);
 
-            agregarProd = new VentanaProduccionesAgregadas();
-            agregarProd.Visible = true;
+            ventanaCyk = new VentanaAlgoritmoCYK(this,gramatica);
+            ventanaCyk.Visible = true;
             this.Visible = false;
         }
 

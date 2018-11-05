@@ -12,33 +12,66 @@ namespace CYK
 {
     public partial class VentanaAgregarProducciones : Form
     {
-        private VentanaProduccionesAgregadas ventanaProduccionesAgregadas;
+
         private Gramatica gramatica;
         
 
-        public VentanaAgregarProducciones(VentanaProduccionesAgregadas ventanaProduccionesAgregadas, Gramatica grama)
+        public VentanaAgregarProducciones( Gramatica grama)
         {
             InitializeComponent();
-            this.ventanaProduccionesAgregadas = ventanaProduccionesAgregadas;
-            inicializarComboBox();
+
             gramatica = grama;
+            inicializarComboBox();
+            
 
         }
 
         private void inicializarComboBox()
         {
-            
+            foreach (Variable variable in gramatica.Variables)
+            {
+                comboBoxVariables.Items.Add(variable.valor);
+            }
         }
 
         public void btnAgregarProduccion_Click(object sender, EventArgs e)
         {
-            
 
-                foreach (Variable es in gramatica.)
+
+            if (txtValorProduccion.Text != null)
             {
-                comboBoxVariables.Items.Add(es.getValor());
-                
+                if (comboBoxVariables.Text != null)
+                {
+                    //validar que los strings  valores esten en las listas guardadas
+
+                    Variable variable = gramatica.BuscarVariable(comboBoxVariables.Text);
+
+                    if (variable.agregarProduccion(txtValorProduccion.Text)==false)
+                    {
+                        MessageBox.Show("Error, debe ingresar una producción que siga la forma normal" +
+                            "de Chomsky.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se ha agregado correctamente la producción : "+
+                            comboBoxVariables.Text +"--->"+txtValorProduccion.Text);
+                        
+
+                        this.Visible = false;
+
+                    };
+                }
+                else
+                {
+                    MessageBox.Show("Error, debe ingresar el valor de la producción.");
+                }
             }
+            else
+            {
+                MessageBox.Show("Error, debe seleccionar una variable.");
+            }
+
+
         }
     }
 }

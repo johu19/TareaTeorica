@@ -9,6 +9,7 @@ namespace CYK
    public class Gramatica
     {
         private List<string> terminales;
+        private List<Variable> variables;
 
         public Gramatica(List<string> var, List<string> term)
         {
@@ -21,8 +22,9 @@ namespace CYK
             Terminales = term;
         }
 
-        public List<Variable> Variables { get; set; }
+        
         public List<string> Terminales { get => terminales; set => terminales = value; }
+        public List<Variable> Variables { get => variables; set => variables = value; }
 
         public Boolean agregarProduccion(string var,string prod)
         {
@@ -47,5 +49,26 @@ namespace CYK
             }
             
         }
+
+        public Variable BuscarVariable(string var)
+        {
+            Variable variable = null;
+            Boolean encontro = false;
+            
+                for(int i=0; i<Variables.Count && encontro==false; i++)
+                {
+                    Variable actual = Variables[i];
+
+                    if (actual.valor.Equals(var))
+                    {
+                        variable = actual;
+                        encontro = true;
+                    }
+                }
+
+            return variable;
+        }
+
+        
     }
 }
