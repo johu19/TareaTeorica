@@ -44,7 +44,7 @@ namespace CYK
                 string produc = "";
                 foreach(Produccion produccion in variable.Producciones)
                 {
-                    produc += produccion.valor + "|";
+                    produc += produccion.valor + " | ";
                 }
                 lista.SubItems.Add(produc);
                 tablaProducciones.Items.Add(lista);
