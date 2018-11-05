@@ -77,11 +77,15 @@ namespace CYK
         //Retorna la matriz resultante del algorimo CYK
         public List<List<string>> algoritmoCYK(string cadena)
         {
-            matrizCYK = new List<List<string>>();
+            List<List<string>> theMatrizCYK = new List<List<string>>();
 
             //validar que la cadena contenga terminales
             if (validarCadena(cadena) == true)
             {
+                for(int i=0; i < cadena.Length; i++)
+                {
+                    theMatrizCYK.Add(new List<string>());
+                }
 
                 //agregar columna 1 en la matriz
 
@@ -90,19 +94,38 @@ namespace CYK
                 {
                     Char term = cad[j];
                      string v=buscarVariablesPorCadena(term);
-                    matrizCYK[0][j] = "{" + v + "}";
+                    theMatrizCYK.ElementAt(j).Add("{" + v + "}");
 
                 }
+
+                int n = cadena.Length;
                 
                 //agregar siguientes columnas
-                for(int j=0; j < cadena.Length - 1; j++)
+                for(int j=1; j < cadena.Length; j++)
                 {
+                    int topeFila = n - j;
 
-                    for(int i=0; i< cadena.Length - 1; i++)
+                    for(int i=0; i< topeFila; i++)
                     {
-                        //TODO
+
+                        int topeK = j;
+
+
+
+                        //AQUI TODO
+
+
+                        for(int k=0; k < topeK; k++)
+                        {
+
+                        }
+
+
                     }
                 }
+
+
+                matrizCYK = theMatrizCYK;
                 
 
 
@@ -115,15 +138,16 @@ namespace CYK
 
         public Boolean validarCadena(string cadena)
         {
-            bool encontrada = false;
+            bool encontrada = true;
 
             Char[] cad = cadena.ToCharArray();
-            for(int i=0; i < cad.Length ; i++)
+            for(int i=0; i < cad.Length && encontrada ; i++)
             {
                 encontrada = false;
+                string s = cad[i] + "";
                 foreach(string term in terminales)
                 {
-                    if (cad[i].Equals(term.ToString()))
+                    if (s.Equals(term))
                     {
                         encontrada = true;
                     }
@@ -144,7 +168,15 @@ namespace CYK
                 {
                     if (product.valor.Equals(term.ToString()))
                     {
-                        var += actual.valor + ",";
+                        if (var.Equals(""))
+                        {
+                            var += actual.valor;
+                        }
+                        else
+                        {
+                            var =var+ ","+actual.valor;
+                        }
+                        
                     }
                 }
             }

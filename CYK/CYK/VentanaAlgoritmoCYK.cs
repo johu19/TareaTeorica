@@ -83,8 +83,8 @@ namespace CYK
                     }
                     else
                     {
-                        MessageBox.Show("Se ha agregado correctamente la producción : " +
-                            comboBoxVariables.Text + "--->" + txtValorProduccion.Text);
+                        //MessageBox.Show("Se ha agregado correctamente la producción : " +
+                        //    comboBoxVariables.Text + "--->" + txtValorProduccion.Text);
                         mostrarGramatica();
 
                     };
