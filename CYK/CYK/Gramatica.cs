@@ -108,15 +108,19 @@ namespace CYK
                     for(int i=0; i< topeFila; i++)
                     {
 
-                        int topeK = j;
+                        int topeK = j+1;
 
 
 
                         //AQUI TODO
 
 
-                        for(int k=0; k < topeK; k++)
+                        for(int k=1; k < topeK; k++)
                         {
+                            string s1 = matrizCYK.ElementAt(i).ElementAt(j);
+                            string s2 = matrizCYK.ElementAt(i + k).ElementAt(j - k);
+
+
 
                         }
 
