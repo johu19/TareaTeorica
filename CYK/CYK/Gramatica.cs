@@ -99,39 +99,107 @@ namespace CYK
                 {
                     Char term = cad[j];
                      string v=buscarVariablesPorCadena(term);
-                    theMatrizCYK.ElementAt(j).Add("{" + v + "}");
+                    theMatrizCYK.ElementAt(j).Add( v);
 
                 }
 
-                //int n = cadena.Length;
-                
-                ////agregar siguientes columnas
-                //for(int j=1; j < cadena.Length; j++)
-                //{
-                //    int topeFila = n - j;
+                int n = cadena.Length;
 
-                //    for(int i=0; i< topeFila; i++)
-                //    {
+             
+                for (int j = 1; j < cadena.Length; j++)
+                {
+                    int topeFila = n - j;
 
-                //        int topeK = j+1;
+                    for (int i = 0; i < topeFila; i++)
+                    {
+
+                        int topeK = j;
+
+                        string concatenacion = "";
+
+                        for (int k = 1; k <= topeK; k++)
+                        {
+                            string s1 = theMatrizCYK.ElementAt(i).ElementAt(k-1);
+                            string s2 = theMatrizCYK.ElementAt(i + k).ElementAt(j - k);
+
+                            string conqui= concatenar(s1, s2);
+
+                            if (concatenacion.Equals(""))
+                            {
+                                concatenacion += conqui;
+                            }
+                            else
+                            {
+                                concatenacion += "," + conqui;
+                            }
+                            
+                        }
+
+                        string concaFinal = "";
+
+                        if (concatenacion.Length > 1)
+                        {
+                            string[] products = concatenacion.Split(',');
+                            
+                            foreach(string pActual in products)
+                            {
+                               string vari= buscarVariablesPorCadenaString(pActual);
+                                if (concaFinal.Equals(""))
+                                {
+                                    concaFinal+= vari;
+                                }
+                                
+                                else if( !vari.Equals(""))
+                                {
+                                    concaFinal+= "," + vari;
+                                }
+                            }
+
+                            
+                        }
+                        else
+                        {
+                            concaFinal = buscarVariablesPorCadenaString(concatenacion);
+
+                        }
+
+                        string[] finito = concaFinal.Split(',');
+                        
+                        for(int m = 0; m < finito.Length; m++)
+                        {
+                            Boolean cond = false;
+                            for (int p = m; p < finito.Length && !cond; p++)
+                            {
+                                if (p != m)
+                                {
+                                    if (finito[m].Equals(finito[p]))
+                                    {
+                                        cond = true;
+                                        finito[m] = null;
+                                    }
+                                }
+                            }
+                        }
+                        concaFinal = "";
+                        foreach(string s in finito)
+                        {
+                            if (s != null)
+                            {
+                                if (concaFinal.Equals("")) {
+                                    concaFinal += s;
+                                }
+                                else
+                                {
+                                    concaFinal += "," + s;
+                                }
+                            }
+                        }
+
+                        theMatrizCYK.ElementAt(i).Add(concaFinal);
 
 
-
-                //        //AQUI TODO
-
-
-                //        for(int k=1; k < topeK; k++)
-                //        {
-                //            string s1 = theMatrizCYK.ElementAt(i).ElementAt(j);
-                //            string s2 = theMatrizCYK.ElementAt(i + k).ElementAt(j - k);
-
-
-
-                //        }
-
-
-                //    }
-                //}
+                    }
+                }
 
 
                 matrizCYK = theMatrizCYK;
@@ -143,6 +211,141 @@ namespace CYK
 
             return matrizCYK;
 
+        }
+
+        public string concatenar(string s1, string s2)
+        {
+            string conqui = "";
+            if(s1.Length==1 && s2.Length == 1)
+            {
+                conqui = s1 + s2;
+            }
+            else if (s1.Length == s2.Length)
+            {
+                string[] mayor = s2.Split(',');
+
+                if (s1.Length == 1)
+                {
+
+                    foreach (string c in mayor)
+                    {
+                        if (conqui.Equals(""))
+                        {
+                            conqui += s1 + c;
+                        }
+                        else
+                        {
+                            conqui += "," + s1 + c;
+                        }
+                    }
+                }
+                else
+                {
+                    string[] menor = s1.Split(',');
+
+                    foreach (string menorAct in menor)
+                    {
+                        foreach (string mayorAct in mayor)
+                        {
+                            if (conqui.Equals(""))
+                            {
+                                conqui += menorAct + mayorAct;
+                            }
+                            else
+                            {
+                                conqui += "," + menorAct + mayorAct;
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            else if (s1.Length<s2.Length)
+            {
+                string[] mayor = s2.Split(',');
+
+                if (s1.Length == 1)
+                {
+                   
+                    foreach (string c in mayor)
+                    {
+                        if (conqui.Equals(""))
+                        {
+                            conqui += s1 + c;
+                        }
+                        else
+                        {
+                            conqui += "," + s1 + c;
+                        }
+                    }
+                }
+                else
+                {
+                    string[] menor = s1.Split(',');
+
+                    foreach(string menorAct in menor)
+                    {
+                        foreach(string mayorAct in mayor)
+                        {
+                            if (conqui.Equals(""))
+                            {
+                                conqui += menorAct +mayorAct ;
+                            }
+                            else
+                            {
+                                conqui += "," + menorAct + mayorAct;
+                            }
+
+                        }
+                    }
+
+                }
+                
+            }else if (s1.Length > s2.Length)
+            {
+                string[] mayor = s1.Split(',');
+
+                if (s2.Length == 1)
+                {
+                    
+                    foreach (string c in mayor)
+                    {
+                        if (conqui.Equals(""))
+                        {
+                            conqui +=c+ s2 ;
+                        }
+                        else
+                        {
+                            conqui += "," +c+ s2;
+                        }
+                    }
+                }
+                else
+                {
+                    string[] menor = s2.Split(',');
+
+                    foreach (string menorAct in menor)
+                    {
+                        foreach (string mayorAct in mayor)
+                        {
+                            if (conqui.Equals(""))
+                            {
+                                conqui += mayorAct+ menorAct ;
+                            }
+                            else
+                            {
+                                conqui += "," + mayorAct + menorAct ;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+
+            return conqui;
         }
 
         public Boolean validarCadena(string cadena)
@@ -193,6 +396,32 @@ namespace CYK
             return var;
         }
 
-        
+        public string buscarVariablesPorCadenaString(string term)
+        {
+            string var = "";
+
+            foreach (Variable actual in variables)
+            {
+                foreach (Produccion product in actual.Producciones)
+                {
+                    if (product.valor.Equals(term))
+                    {
+                        if (var.Equals(""))
+                        {
+                            var += actual.valor;
+                        }
+                        else
+                        {
+                            var = var + "," + actual.valor;
+                        }
+
+                    }
+                }
+            }
+
+            return var;
+        }
+
+
     }
 }

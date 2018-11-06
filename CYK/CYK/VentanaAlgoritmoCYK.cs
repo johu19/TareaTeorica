@@ -126,14 +126,15 @@ namespace CYK
 
                 for(int j = 0; j < cadena.Length; j++)
                 {
+                    int tamanio = matriz.ElementAt(j).Count;
 
                     if (matriz.First().Count > j)
                     {
-                        for (int i = 0; i < cadena.Length; i++)
+                        for (int i = 0; i < tamanio; i++)
                         {
 
-                            string s = matriz.ElementAt(i).ElementAt(j);
-                            tablaCYK.Rows[i].Cells[j].Value = s;
+                            string s = matriz.ElementAt(j).ElementAt(i);
+                            tablaCYK.Rows[j].Cells[i].Value = s;
 
                         }
                     }
