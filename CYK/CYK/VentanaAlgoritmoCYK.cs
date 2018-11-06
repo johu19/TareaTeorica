@@ -55,6 +55,14 @@ namespace CYK
            
         }
 
+        public void lambdaEntra(bool entra)
+        {
+            if (entra == false)
+            {
+                btnLambda.Enabled = false;
+            }
+        }
+
         private void VentanaAlgoritmoCYK_Load(object sender, EventArgs e)
         {
 
@@ -74,26 +82,52 @@ namespace CYK
            
             if (txtValorProduccion.Text != null)
             {
+                
                 if (validarValorProduccion() == true)
                 {
                     if (comboBoxVariables.Text != null)
                     {
-                        //validar que los strings  valores esten en las listas guardadas
-
-                        Variable variable = gramatica.BuscarVariable(comboBoxVariables.Text);
-
-                        if (variable.agregarProduccion(txtValorProduccion.Text) == false)
+                        if (txtValorProduccion.Text.Equals("λ"))
                         {
-                            MessageBox.Show("Error, debe ingresar una producción que siga la FORMA NORMAL " +
-                                "DE CHOMSKY!!");
+                            if (!comboBoxVariables.Text.Equals("S"))
+                            {
+                                MessageBox.Show("Error,  λ no puede estar con otra variable que no sea S");
+                            }
+                            else if(comboBoxVariables.Text.Equals("S"))
+                            {
+                                Variable variable = gramatica.BuscarVariable(comboBoxVariables.Text);
+
+                                if (variable.agregarProduccion(txtValorProduccion.Text) == false)
+                                {
+                                    MessageBox.Show("Error, debe ingresar una producción que siga la FORMA NORMAL " +
+                                        "DE CHOMSKY!!");
+                                }
+                                else
+                                {
+                                    
+                                    mostrarGramatica();
+
+                                };
+                            }
                         }
                         else
                         {
-                            //MessageBox.Show("Se ha agregado correctamente la producción : " +
-                            //    comboBoxVariables.Text + "--->" + txtValorProduccion.Text);
-                            mostrarGramatica();
+                            
+                            Variable variable = gramatica.BuscarVariable(comboBoxVariables.Text);
 
-                        };
+                            if (variable.agregarProduccion(txtValorProduccion.Text) == false)
+                            {
+                                MessageBox.Show("Error, debe ingresar una producción que siga la FORMA NORMAL " +
+                                    "DE CHOMSKY!!");
+                            }
+                            else
+                            {
+                                //MessageBox.Show("Se ha agregado correctamente la producción : " +
+                                //    comboBoxVariables.Text + "--->" + txtValorProduccion.Text);
+                                mostrarGramatica();
+
+                            }
+                        }
                     }
                     else
                     {
@@ -213,6 +247,11 @@ namespace CYK
         private void tablaProducciones_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLambda_Click(object sender, EventArgs e)
+        {
+            txtValorProduccion.Text = "λ";
         }
     }
 }

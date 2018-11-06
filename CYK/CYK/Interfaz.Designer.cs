@@ -76,11 +76,12 @@
             this.textTerminales.Name = "textTerminales";
             this.textTerminales.Size = new System.Drawing.Size(172, 22);
             this.textTerminales.TabIndex = 3;
+            this.textTerminales.Text = "λ,";
             // 
             // btnReestablecer
             // 
             this.btnReestablecer.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReestablecer.Location = new System.Drawing.Point(54, 193);
+            this.btnReestablecer.Location = new System.Drawing.Point(35, 193);
             this.btnReestablecer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReestablecer.Name = "btnReestablecer";
             this.btnReestablecer.Size = new System.Drawing.Size(161, 61);

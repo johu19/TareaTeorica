@@ -8,16 +8,15 @@ namespace CYK
 {
 
     
-
+    
     public class Variable
     {
-
+        /*Atributos*/
         public string valor { get; set; }
         public List<Produccion> Producciones { get => producciones; set => producciones = value; }
-
         private List<Produccion> producciones;
 
-
+        /*Constructor*/
         public Variable(string v)
         {
             producciones = new List<Produccion>();
@@ -25,7 +24,7 @@ namespace CYK
 
         }
 
-        //verificar lo de las variables inutiles
+        /*Agrega una produccion a su lista de producciones*/
         public Boolean agregarProduccion(string nom)
         {
             if (nom.Length > 2)

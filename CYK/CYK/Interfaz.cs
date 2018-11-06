@@ -44,6 +44,11 @@ namespace CYK
 
             ventanaCyk = new VentanaAlgoritmoCYK(this,gramatica);
             ventanaCyk.Visible = true;
+            if (term.Contains("λ"))
+            {
+                ventanaCyk.lambdaEntra(true);
+            }
+            
             this.Visible = false;
         }
 

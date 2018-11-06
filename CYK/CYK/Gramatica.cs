@@ -8,12 +8,17 @@ namespace CYK
 {
     public class Gramatica
     {
-        private List<string> terminales;
-        private List<Variable> variables;
 
+        /*Atributos*/
+
+         //Terminales
+        private List<string> terminales;
+         //Variables
+        private List<Variable> variables;
+         //Matriz resultante del algoritmo CYK
         private List<List<string>> matrizCYK;
 
-
+        /*Constructor*/
         public Gramatica(List<string> var, List<string> term)
         {
             Variables = new List<Variable>();
@@ -25,15 +30,15 @@ namespace CYK
             Terminales = term;
         }
 
+        /*Getters & Setters*/
         public List<List<string>> getMatrizCYK()
         {
             return matrizCYK;
         }
-
-
         public List<string> Terminales { get => terminales; set => terminales = value; }
         public List<Variable> Variables { get => variables; set => variables = value; }
 
+        /*Agrega una produccion. Parametros: variable, valor de la produccion*/
         public Boolean agregarProduccion(string var, string prod)
         {
             Boolean cond = true;
@@ -58,6 +63,7 @@ namespace CYK
 
         }
 
+        /*Encuentra la variable respectiva de una cadena (string) pasada por parametro*/
         public Variable BuscarVariable(string var)
         {
             Variable variable = null;
@@ -77,14 +83,14 @@ namespace CYK
             return variable;
         }
 
-
-      
-        //Retorna la matriz resultante del algorimo CYK
+        /*ALGORITMO CYK*/
+        /*Realiza el algoritmo CYK con la gramatica ingresada.
+         Retorna la matriz resultante del algoritmo.*/
         public List<List<string>> algoritmoCYK(string cadena)
         {
             List<List<string>> theMatrizCYK = new List<List<string>>();
 
-            //validar que la cadena contenga terminales
+            //valida que la cadena contenga solo terminales
             if (validarCadena(cadena) == true)
             {
                 for(int i=0; i < cadena.Length; i++)
@@ -92,8 +98,7 @@ namespace CYK
                     theMatrizCYK.Add(new List<string>());
                 }
 
-                //agregar columna 1 en la matriz
-
+                //agrega columna 1 en la matriz
                 Char[] cad = cadena.ToCharArray();
                 for(int j=0; j<cad.Length;j++)
                 {
@@ -105,7 +110,7 @@ namespace CYK
 
                 int n = cadena.Length;
 
-             
+                //agrega siguientes columnas en la matriz
                 for (int j = 1; j < cadena.Length; j++)
                 {
                     int topeFila = n - j;
@@ -213,6 +218,10 @@ namespace CYK
 
         }
 
+        /*Concatena 2 strings que representan conjuntos encontrados por el CYK
+         dependiendo de la longitud de cada uno, si uno es mayor al otro y mayor a 1,
+         concatena el conjunto s1(izquierda) con el conjunto s2(derecha)
+         de manera diferente (segun su longitud y quien sea mayor)*/
         public string concatenar(string s1, string s2)
         {
             string conqui = "";
@@ -348,6 +357,10 @@ namespace CYK
             return conqui;
         }
 
+
+        /*Valida que la cadena w ingresada tenga caracteres validos,
+         es decir, que pertenezcan a los terminales ingresados
+         anteriormente*/
         public Boolean validarCadena(string cadena)
         {
             bool encontrada = true;
@@ -370,6 +383,10 @@ namespace CYK
 
         }
 
+        /*Busca la variable a la que correspondria un valor pasado por parametro.
+         Es decir si las producciones de una variable contienen al terminal term entonces
+         el metodo retorna la variable encontrada, sino retorna vacío.
+         (1er paso del CYK, para encontrar producciones a las q pertenece los terminos de la cadena w.)*/
         public string buscarVariablesPorCadena(char term)
         {
             string var = "";
@@ -396,6 +413,10 @@ namespace CYK
             return var;
         }
 
+        /*Busca la variable a la que correspondria un valor pasado por parametro.
+         Es decir si las producciones de una variable contienen a la cadena term entonces
+         el metodo retorna la variable encontrada, sino retorna vacío.
+         (metodo utilizado para encontrar conjuntos en el cyk y llenar asi la matriz.)*/
         public string buscarVariablesPorCadenaString(string term)
         {
             string var = "";

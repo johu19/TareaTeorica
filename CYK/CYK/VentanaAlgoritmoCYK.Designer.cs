@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnAgregarProduccion = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtValorProduccion = new System.Windows.Forms.TextBox();
@@ -49,7 +50,7 @@
             this.lblResultado = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnLambda = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCYK)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.btnLambda);
             this.panel1.Controls.Add(this.btnConfirmar);
             this.panel1.Controls.Add(this.btnAgregarProduccion);
             this.panel1.Controls.Add(this.label8);
@@ -74,9 +76,19 @@
             this.panel1.Size = new System.Drawing.Size(686, 283);
             this.panel1.TabIndex = 1;
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Location = new System.Drawing.Point(555, 210);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(111, 43);
+            this.btnConfirmar.TabIndex = 11;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
             // btnAgregarProduccion
             // 
-            this.btnAgregarProduccion.Location = new System.Drawing.Point(445, 17);
+            this.btnAgregarProduccion.Location = new System.Drawing.Point(460, 32);
             this.btnAgregarProduccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAgregarProduccion.Name = "btnAgregarProduccion";
             this.btnAgregarProduccion.Size = new System.Drawing.Size(104, 46);
@@ -97,7 +109,7 @@
             // 
             // txtValorProduccion
             // 
-            this.txtValorProduccion.Location = new System.Drawing.Point(341, 32);
+            this.txtValorProduccion.Location = new System.Drawing.Point(356, 43);
             this.txtValorProduccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorProduccion.Name = "txtValorProduccion";
             this.txtValorProduccion.Size = new System.Drawing.Size(98, 26);
@@ -106,7 +118,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(289, 32);
+            this.label9.Location = new System.Drawing.Point(320, 43);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 18);
             this.label9.TabIndex = 7;
@@ -115,7 +127,7 @@
             // comboBoxVariables
             // 
             this.comboBoxVariables.FormattingEnabled = true;
-            this.comboBoxVariables.Location = new System.Drawing.Point(150, 29);
+            this.comboBoxVariables.Location = new System.Drawing.Point(196, 40);
             this.comboBoxVariables.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxVariables.Name = "comboBoxVariables";
             this.comboBoxVariables.Size = new System.Drawing.Size(111, 26);
@@ -273,15 +285,15 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Matriz : ";
             // 
-            // btnConfirmar
+            // btnLambda
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(555, 210);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(111, 43);
-            this.btnConfirmar.TabIndex = 11;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            this.btnLambda.Location = new System.Drawing.Point(356, 15);
+            this.btnLambda.Name = "btnLambda";
+            this.btnLambda.Size = new System.Drawing.Size(36, 23);
+            this.btnLambda.TabIndex = 12;
+            this.btnLambda.Text = " λ";
+            this.btnLambda.UseVisualStyleBackColor = true;
+            this.btnLambda.Click += new System.EventHandler(this.btnLambda_Click);
             // 
             // VentanaAlgoritmoCYK
             // 
@@ -329,5 +341,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBoxVariables;
         private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.Button btnLambda;
     }
 }
