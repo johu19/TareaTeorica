@@ -68,36 +68,79 @@ namespace CYK
 
         private void btnAgregarProduccion_Click(object sender, EventArgs e)
         {
+           
             if (txtValorProduccion.Text != null)
             {
-                if (comboBoxVariables.Text != null)
+                if (validarValorProduccion() == true)
                 {
-                    //validar que los strings  valores esten en las listas guardadas
-
-                    Variable variable = gramatica.BuscarVariable(comboBoxVariables.Text);
-
-                    if (variable.agregarProduccion(txtValorProduccion.Text) == false)
+                    if (comboBoxVariables.Text != null)
                     {
-                        MessageBox.Show("Error, debe ingresar una producción que siga la forma normal" +
-                            "de Chomsky.");
+                        //validar que los strings  valores esten en las listas guardadas
+
+                        Variable variable = gramatica.BuscarVariable(comboBoxVariables.Text);
+
+                        if (variable.agregarProduccion(txtValorProduccion.Text) == false)
+                        {
+                            MessageBox.Show("Error, debe ingresar una producción que siga la FORMA NORMAL " +
+                                "DE CHOMSKY!!");
+                        }
+                        else
+                        {
+                            //MessageBox.Show("Se ha agregado correctamente la producción : " +
+                            //    comboBoxVariables.Text + "--->" + txtValorProduccion.Text);
+                            mostrarGramatica();
+
+                        };
                     }
                     else
                     {
-                        //MessageBox.Show("Se ha agregado correctamente la producción : " +
-                        //    comboBoxVariables.Text + "--->" + txtValorProduccion.Text);
-                        mostrarGramatica();
-
-                    };
+                        MessageBox.Show("Error, debe ingresar el valor de la producción.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error, debe ingresar el valor de la producción.");
+                    MessageBox.Show("Error, debe ingresar un valor válido. (valores definidos en la " +
+                        "ventana anterior.");
                 }
+                
+                
             }
             else
             {
                 MessageBox.Show("Error, debe seleccionar una variable.");
             }
+        }
+
+        public bool validarValorProduccion()
+        {
+            Char[] valor = txtValorProduccion.Text.ToCharArray();
+          
+            bool encontrada = true;
+            
+            for (int i = 0; i < valor.Length && encontrada; i++)
+            {
+                encontrada = false;
+                string s = valor[i] + "";
+                foreach (string term in gramatica.Terminales)
+                {
+                    if (s.Equals(term))
+                    {
+                        encontrada = true;
+                    }
+                }
+                foreach (Variable vari in gramatica.Variables)
+                {
+                    if (s.Equals(vari.valor))
+                    {
+                        encontrada = true;
+                    }
+                }
+            }
+
+            return encontrada;
+
+
+            
         }
 
         private void btnValidarConCYK_Click(object sender, EventArgs e)
