@@ -22,6 +22,8 @@ namespace CYK
             interfaz = inter;
             gramatica = grama;
             inicializarComboBox();
+            btnValidarConCYK.Enabled = false;
+            btnAgregarProduccion.Enabled = true;
         }
 
         //boton regresar
@@ -60,6 +62,7 @@ namespace CYK
 
         private void inicializarComboBox()
         {
+            
             foreach (Variable variable in gramatica.Variables)
             {
                 comboBoxVariables.Items.Add(variable.valor);
@@ -198,6 +201,18 @@ namespace CYK
 
 
             }
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            btnValidarConCYK.Enabled = true;
+            btnAgregarProduccion.Enabled = false;
+            btnConfirmar.Enabled = false;
+        }
+
+        private void tablaProducciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
