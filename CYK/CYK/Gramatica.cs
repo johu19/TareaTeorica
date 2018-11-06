@@ -78,7 +78,7 @@ namespace CYK
         }
 
 
-        //TODO
+      
         //Retorna la matriz resultante del algorimo CYK
         public List<List<string>> algoritmoCYK(string cadena)
         {

@@ -110,6 +110,16 @@ namespace CYK
 
                 List<List<string>> matriz = gramatica.getMatrizCYK();
 
+                if (matriz.ElementAt(0).Last().Split(',').Contains("S"))
+                {
+                    lblResultado.Text = "La gramática G SÍ acepta a la cadena w. ";
+
+                }
+                else
+                {
+                    lblResultado.Text = "La gramática G NO acepta a la cadena w. ";
+                }
+
                 tablaCYK.Columns.Clear();
                 tablaCYK.Rows.Clear();
 
@@ -134,7 +144,7 @@ namespace CYK
                         {
 
                             string s = matriz.ElementAt(j).ElementAt(i);
-                            tablaCYK.Rows[j].Cells[i].Value = s;
+                            tablaCYK.Rows[j].Cells[i].Value = "{"+s+"}";
 
                         }
                     }
