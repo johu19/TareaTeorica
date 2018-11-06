@@ -208,10 +208,14 @@ namespace CYK
 
 
                 matrizCYK = theMatrizCYK;
-                
 
 
 
+
+            }
+            else
+            {
+                throw new Exception("Cadena w ingresada no es valida. Ingresar caracteres correctos.");
             }
 
             return matrizCYK;
