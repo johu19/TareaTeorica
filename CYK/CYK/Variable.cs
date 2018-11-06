@@ -33,7 +33,8 @@ namespace CYK
             }
             else
             {
-                if (nom.ToCharArray().ElementAt(0).Equals(valor))
+                string s = nom.ToCharArray().First() + "";
+                if (s.Equals(valor))
                 {
                     return false;
                 }

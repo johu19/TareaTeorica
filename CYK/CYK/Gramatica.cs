@@ -357,6 +357,21 @@ namespace CYK
             return conqui;
         }
 
+        public Boolean confirmar()
+        {
+            Boolean cond = true;
+
+            foreach(Variable v in variables)
+            {
+                if (v.Producciones.Count == 0)
+                {
+                    cond = false;
+                }
+            }
+
+            return cond;
+        }
+
 
         /*Valida que la cadena w ingresada tenga caracteres validos,
          es decir, que pertenezcan a los terminales ingresados

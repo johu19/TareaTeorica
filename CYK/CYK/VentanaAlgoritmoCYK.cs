@@ -46,7 +46,15 @@ namespace CYK
                 string produc = "";
                 foreach(Produccion produccion in variable.Producciones)
                 {
-                    produc += produccion.valor + " | ";
+                    if (produc.Equals(""))
+                    {
+                        produc += produccion.valor;
+                    }
+                    else
+                    {
+                        produc +="|"+ produccion.valor;
+                    }
+                    
                 }
                 lista.SubItems.Add(produc);
                 tablaProducciones.Items.Add(lista);
@@ -239,9 +247,16 @@ namespace CYK
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            btnValidarConCYK.Enabled = true;
-            btnAgregarProduccion.Enabled = false;
-            btnConfirmar.Enabled = false;
+            if (!gramatica.confirmar())
+            {
+                MessageBox.Show("Todas las variables deben tener por lo menos UNA produccion");
+            }
+            else
+            {
+                btnValidarConCYK.Enabled = true;
+                btnAgregarProduccion.Enabled = false;
+                btnConfirmar.Enabled = false;
+            }
         }
 
         private void tablaProducciones_SelectedIndexChanged(object sender, EventArgs e)
